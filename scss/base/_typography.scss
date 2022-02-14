@@ -1,0 +1,61 @@
+/**
+ * Basic typography style for copy text
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1;
+  font-weight: 600;
+}
+
+h1,
+.heading-1 {
+  font-family: 'Rajdhani', sans-serif;
+  @include heading1();
+}
+
+h2,
+.heading-2 {
+  font-family: 'Khand', sans-serif;
+  @include heading2();
+}
+
+h3 {
+  @include heading3();
+}
+
+h4 {
+  @include heading4();
+}
+
+h5 {
+  @include heading5();
+}
+
+h6 {
+  @include heading6();
+}
+
+p {
+  margin: 0;
+  @include bodyText();
+  a {
+    color: $secondary;
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.subheading {
+  font-family: 'Khand', sans-serif;
+  font-size: 32px;
+  @include mq("tablet", max) {
+    font-size: 24px;
+  }
+}

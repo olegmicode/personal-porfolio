@@ -1,0 +1,109 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+// Header styles
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 0;
+  z-index: 10;
+  .hamburger {
+    display: none;
+    @include mq("desktop", max) {
+      display: block;
+      margin-right: 16px;
+    }
+  }
+  @include mq("desktop", max) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @include mq("tablet", max) {
+    padding: 0;
+  }
+  &-logo {
+    margin-left: 16px;
+    font-size: 0;
+    @include mq("desktop", max) {
+      margin-left: 0;
+      z-index: 10;
+    }
+    img {
+      max-height: 64px;
+      @include mq("tablet", max) {
+        background: rgba(0, 0, 0, 0.37);
+      }
+    }
+  }
+  &-menu {
+    position: fixed;
+    top: 50%;
+    left: 30px;
+    padding-left: 20px;
+    transform: translateY(-60%);
+    @include mq("desktop", max) {
+      top: 0;
+      left: -180px;
+      width: 180px;
+      height: 100%;
+      transform: none;
+      padding: 120px 0 0 30px;
+      background: rgba(0, 0, 0, 0.87);
+      transition: all 0.3s ease-in-out;
+      &.open {
+        left: 0;
+      }
+    }
+    &__item {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        left: -16px;
+        width: 5px;
+        height: 5px;
+        top: 9px;
+        background: $grey;
+        transform: rotate(45deg);
+        transition: all 0.3s ease-in-out;
+        z-index: 1;
+      }
+      &:not(:first-child) {
+        &::after {
+          content: '';
+          position: absolute;
+          left: -14px;
+          top: -38px;
+          width: 0;
+          height: 0;
+          border-left: 1px solid #61892f;
+          transition: all 0.3s ease-in-out;
+          z-index: 0;
+        }
+      }
+      &:not(:last-child) {
+        margin-bottom: 32px;
+      }
+      &.active {
+        &::before {
+          background-color: $secondary;
+          transform: rotate(135deg) scale(1.6);
+        }
+        &::after {
+          height: 45px;
+        }
+      }
+      a {
+        position: inline-block;
+        color: $white;
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,270 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the common parts in all application
+// -----------------------------------------------------------------------------
+// Custom Color Classes
+.text-primary {
+  color: $primary;
+}
+.text-secondary {
+  color: $secondary;
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+.bg-secondary {
+  background-color: $secondary;
+}
+
+// Custom Container
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1030px;
+  @include mq("desktop", max) {
+    padding: 0 64px;
+  }
+  @include mq("tablet", max) {
+    padding: 0 10px;
+  }
+}
+
+.cursor {
+  display: none;
+  position: fixed;
+  background-color: $primary;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  transform: scale(1);
+  &.active {
+    background-color: $secondary;
+    opacity: 1;
+    transform: scale(0);
+  }
+  &.menu-active {
+    opacity: 1;
+    transform: scale(0);
+  }
+  &.primary {
+    background-color: $primary !important;
+  }
+  &.white {
+    background-color: $white !important;
+  }
+  &.hovered {
+    opacity: 1;
+  }
+  @include mq("tablet") {
+    display: block;
+  }
+}
+
+.cursor-follower {
+  display: none;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.3);
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+              0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
+              0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background,
+              0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) border-color;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(2px, 2px);
+  overflow: hidden;
+  mix-blend-mode: difference;
+  svg {
+    opacity: 0;
+    position: absolute;
+    left: -15px;
+    top: -15px;
+    transition: 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+                0.6s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
+                0.6s cubic-bezier(0.75, -0.27, 0.3, 1.33) background,
+                0.6s cubic-bezier(0.75, -0.27, 0.3, 1.33) border-color;
+  }
+  &.active {
+    opacity: 1;
+    transform: scale(3);
+    border-color: $secondary;
+  }
+  &.invert {
+    background: rgba(0, 0, 0, 0.3);
+    svg {
+      opacity: 1;
+    }
+  }
+  &.primary {
+    border-color: $primary !important;
+  }
+  &.white {
+    border-color: $white !important;
+  }
+  &.menu-active {
+    opacity: 1;
+    transform: scale(3);
+  }
+
+  &.hovered {
+    opacity: 1;
+  }
+  @include mq("tablet") {
+    display: block;
+  }
+}
+
+.container-fluid {
+  margin: auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.background-element {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.d-sm-only {
+  @include mq("tablet") {
+    display: none;
+  }
+}
+
+section {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fixed-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/backgrounds/grid.webp);
+}
+
+.form-holder {
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .form-row {
+      position: relative;
+      margin: 0 0 16px;
+      &.half-row {
+        width: calc(50% - 8px);
+        @include mq("tablet", max) {
+          width: 100%;
+        }
+      }
+      &.full-row {
+        width: 100%;
+      }
+    }
+    input[type=text], input[type=email] {
+      width: 100%;
+      font-size: 16px;
+      padding: 16px;
+      background: $black;
+      border: 1px solid $grey;
+      color: white;
+      font-family: monospace;
+    }
+    textarea {
+      width: 100%;
+      font-size: 16px;
+      padding: 16px;
+      background: $black;
+      border: 1px solid $grey;
+      color: white;
+    }
+    label {
+      position: absolute;
+      top: 15px;
+      left: 16px;
+      color: $text_color;
+      transition: all 0.3s ease-in-out;
+    }
+    input.filled + label,
+    input:focus + label,
+    textarea.filled + label,
+    textarea:focus + label {
+      color: $secondary;
+      font-size: 12px;
+      left: 8px;
+      top: 4px;;
+    }
+    .footer-row {
+      margin-left: auto;
+      .btn-holder {
+        position: relative;
+        overflow: hidden;
+        .bg {
+          position: absolute;
+          display: block;
+          top: 0;
+          left: -20px;
+          height: 100%;
+          width: 0;
+          background-color: $secondary;
+          transition: all 0.3s ease-in-out;
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 0;
+            height: 100%;
+            border-top: 27px solid #86c232;
+            border-left: 10px solid #86c232;
+            border-bottom: 27px solid transparent;
+            border-right: 10px solid transparent;
+          }
+        }
+        &:hover {
+          .bg {
+            left: 0;
+            width: 100%;
+          }
+        }
+
+      }
+      input[type=submit] {
+        position: relative;
+        z-index: 5;
+        padding: 12px 20px;
+        color: $secondary;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Rajdhani', sans-serif;
+        letter-spacing: 0.75px;
+        border: 1px solid $secondary;
+        background-color: transparent;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          color: $black;
+        }
+      }
+    }
+  }
+}
