@@ -262,10 +262,10 @@
 
     const skillTags = [
       'Javascript', 'CSS', 'HTML', 'Git',
-      'Typescript', 'PHP', 'VueJS', 'API',
-      'NodeJS', 'GSAP', 'MySQL', 'AWS',
-      'TailwindCSS', 'SCSS', 'ReactJS', 'Material UI',
-      'Laravel', 'Next.js', 'VueJS', 'Nuxt.js'
+      'Typescript', 'PHP', 'React', 'Vue','API',
+      'NodeJS', 'GSAP', 'MySQL', 'AWS', 'Fabric.js',
+      'TailwindCSS', 'SCSS', 'ReactJS', 
+      'WordPress','E-Commerce', 'Laravel', 'Next.js', 'Vue', 'Nuxt.js'
     ];
     if (window.innerWidth < 768) {
       var tagCloud = TagCloud('.skill-cloud', skillTags, {
